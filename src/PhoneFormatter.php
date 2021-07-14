@@ -63,7 +63,14 @@ class PhoneFormatter
         return ltrim($number, '+');
     }
 
-    
+    public function getCountryByCode($code) {
+        $all_countries = $this->getAllCountries();
+        foreach ($all_countries as $country) {
+            if ($country['code'] === $code) {
+                return $country;
+            }
+        }
+    }
 
     public function getAllCountries() {
         $countries = array();
@@ -301,15 +308,4 @@ class PhoneFormatter
 
         return $countries;
     }
-    
-    public function getCountryByCode($code) {
-        $all_countries = $this->getAllCountries();
-        foreach ($all_countries as $country) {
-            if ($country['code'] === $code) {
-                return $country;
-            }
-        }
-    }
 }
-
-?>
